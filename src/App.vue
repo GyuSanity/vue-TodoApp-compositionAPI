@@ -9,7 +9,7 @@
   <!-- <TodoInput @하위컴포넌트이벤트이름="상위컴포넌트의 메서드 이름"></TodoInput> -->
   <TodoInput @InputUpdate="addTodoItem"></TodoInput>
   <!-- <TodoList :프롭스이름="상위 컴포넌트의 데이터 이름"></TodoList> -->
-  <TodoList :todoItems="todoItems"></TodoList>
+  <TodoList :todoItems="todoItems" @deleteItem="deleteTodoItem"></TodoList>
 </template>
 
 <script setup>
@@ -26,7 +26,6 @@ const todoItems = ref([]);
 const addTodoItem = (value) => {
   console.log("Emit is Called", value);
   localStorage.setItem(value, value);
-
   todoItems.value = fetchTodos();
 };
 
@@ -38,6 +37,18 @@ const fetchTodos = () => {
   }
   return result;
 };
+
+const deleteTodoItem = (key) => {
+  const index = todoItems.value.indexOf(key);
+
+  if (index !== -1) {
+    todoItems.value.splice(index, 1);
+  }
+
+  localStorage.removeItem(key);
+  //fetchTodos();
+};
+
 todoItems.value = fetchTodos();
 </script>
 
