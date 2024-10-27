@@ -9,9 +9,10 @@ import { defineEmits } from "vue";
 
 const todoInput = ref("");
 const emit = defineEmits(["InputUpdate"]);
+const clearTodo = () => (todoInput.value = "");
 const addTodo = () => {
   emit("InputUpdate", todoInput.value);
-  todoInput.value = "";
+  clearTodo();
 };
 </script>
 
