@@ -1,8 +1,8 @@
 <template>
   <ul>
     <li v-for="(item, index) in props.todoItems" :key="index">
-      {{ item }}
-      <button @click="delItem(item)">삭제</button>
+      <span>{{ item }}</span>
+      <button @click="delItem(item, index)">삭제</button>
     </li>
   </ul>
 </template>
@@ -19,8 +19,8 @@ const props = defineProps({
   },
 });
 
-const delItem = (item) => {
-  emit("deleteItem", item);
+const delItem = (item, index) => {
+  emit("deleteItem", item, index);
 };
 </script>
 
