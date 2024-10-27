@@ -1,5 +1,4 @@
 <template>
-  <<<<<<< HEAD
   <TodoHeader></TodoHeader>
   <TodoInput @InputUpdate="addTodoItem"></TodoInput>
   <TodoList :todoItems="todoItems"></TodoList>
