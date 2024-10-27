@@ -40,10 +40,7 @@ const fetchTodos = () => {
 
 const deleteTodoItem = (item, index) => {
   //const index = todoItems.value.indexOf(key);
-  if (index !== -1) {
-    todoItems.value.splice(index, 1);
-  }
-
+  todoItems.value.splice(index, 1);
   localStorage.removeItem(item);
   //fetchTodos();
 };
